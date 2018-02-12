@@ -13,7 +13,7 @@ public class TransactionProxy extends AspectProxy {
 
     @Override
     public boolean intercept(Class<?> cls, Method method, Object[] params) {
-        return FLAG_HOLDER.get() && method.isAnnotationPresent(Transaction.class);
+        return !FLAG_HOLDER.get() && method.isAnnotationPresent(Transaction.class);
     }
 
     @Override

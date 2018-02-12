@@ -5,6 +5,7 @@ import org.smart4j.framework.annotation.Service;
 import org.smart4j.framework.util.ClassUtil;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -73,9 +74,22 @@ public final class ClassHelper {
         for (Class<?> cls : CLASS_SET) {
             if (cls.isAnnotationPresent(annotationClass)) {
                 classSet.add(cls);
+            } else if (isAnnotationPresentOnMethod(cls, annotationClass)) {
+                classSet.add(cls);
             }
         }
 
         return classSet;
+    }
+
+    private static boolean isAnnotationPresentOnMethod(Class<?> cls, Class<? extends Annotation> annotationClass) {
+        Method[] methods = cls.getDeclaredMethods();
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(annotationClass)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

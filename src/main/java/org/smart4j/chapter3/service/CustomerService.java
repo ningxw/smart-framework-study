@@ -47,6 +47,7 @@ public class CustomerService {
         return customerList;
     }
 
+    @Transaction
     public List<Customer> getCustomerList() {
         String sql = "select * from customer a";
         List<Customer> customerList = DatabaseHelper.queryEntityList(Customer.class, sql);
