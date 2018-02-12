@@ -35,6 +35,7 @@
                 </td>
             </tr>
         </c:forEach>
+        <a href="${BASE}/customer_create">create</a>
     </table>
 </body>
 </html>
