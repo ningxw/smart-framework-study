@@ -110,7 +110,7 @@ public class DatabaseHelper {
     }
 
     private static String getTableName(Class<?> entityClass) {
-        return entityClass.getSimpleName();
+        return entityClass.getSimpleName().toLowerCase();
     }
 
     public static List<Map<String, Object>> executeQuery(String sql, Object... params) {

@@ -1,8 +1,10 @@
 package org.smart4j.chapter3.service;
 
 import org.smart4j.framework.annotation.Transaction;
+import org.smart4j.framework.bean.FileParam;
 import org.smart4j.framework.helper.DatabaseHelper;
 import org.smart4j.chapter3.model.Customer;
+import org.smart4j.framework.helper.UploadHelper;
 import org.smart4j.framework.util.Logger;
 import org.smart4j.framework.annotation.Service;
 
@@ -26,7 +28,7 @@ public class CustomerService {
                     Customer customer = new Customer();
                     customer.setId(resultSet.getLong("id"));
                     customer.setName(resultSet.getString("name"));
-                    customer.setContract(resultSet.getString("contract"));
+                    customer.setContact(resultSet.getString("contact"));
 
                     customerList.add(customer);
                 }
@@ -60,8 +62,12 @@ public class CustomerService {
     }
 
     @Transaction
-    public boolean createCustomer(Map<String, Object> fieldMap) {
-        return DatabaseHelper.insertEntity(Customer.class, fieldMap);
+    public boolean createCustomer(Map<String, Object> fieldMap, FileParam fileParam) {
+        boolean result = DatabaseHelper.insertEntity(Customer.class, fieldMap);
+        if (result) {
+            UploadHelper.uploadFile("/home/nxw/code/temp/", fileParam);
+        }
+        return result;
     }
 
     @Transaction

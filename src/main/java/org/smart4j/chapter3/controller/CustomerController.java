@@ -6,6 +6,7 @@ import org.smart4j.framework.annotation.Action;
 import org.smart4j.framework.annotation.Controller;
 import org.smart4j.framework.annotation.Inject;
 import org.smart4j.framework.bean.Data;
+import org.smart4j.framework.bean.FileParam;
 import org.smart4j.framework.bean.Param;
 import org.smart4j.framework.bean.View;
 import sun.swing.FilePane;
@@ -31,7 +32,10 @@ public class CustomerController {
 
     @Action("post:/customer_create")
     public Data doCreateCustomer(Param param) {
-        Map<String, Object> fieldMap = param.getMap();
-        return null;
+        Map<String, Object> fieldMap = param.getFieldMap();
+
+        FileParam fileParam = param.getFile("photo");
+        boolean result = customerService.createCustomer(fieldMap, fileParam);
+        return new Data(result);
     }
 }

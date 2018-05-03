@@ -54,16 +54,16 @@ public class Param {
 
         if (CollectionUtil.isNotEmpty(fileParamList)) {
             for (FileParam fileParam : fileParamList) {
-                String fileName = fileParam.getFileName();
+                String filedName = fileParam.getFieldName();
                 List<FileParam> tmepFileParamList;
-                if (fileMap.containsKey(fileName)) {
-                    tmepFileParamList = fileMap.get(fileName);
+                if (fileMap.containsKey(filedName)) {
+                    tmepFileParamList = fileMap.get(filedName);
                 } else {
                     tmepFileParamList = new ArrayList<>();
                 }
 
                 tmepFileParamList.add(fileParam);
-                fileMap.put(fileName, tmepFileParamList);
+                fileMap.put(filedName, tmepFileParamList);
             }
         }
 
@@ -85,7 +85,7 @@ public class Param {
     }
 
     public boolean isEmpty() {
-        return CollectionUtil.isEmpty(paramMap);
+        return CollectionUtil.isEmpty(formParamList) && CollectionUtil.isEmpty(fileParamList);
     }
 
     public String getString(String name) {

@@ -5,7 +5,7 @@
   Time: 下午10:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 	<head>
 	    <title>客户管理 - 创建客户</title>
@@ -23,25 +23,25 @@
 				<tr>
 					<td>联系人:</td>
 					<td>
-						<input type="text" name="name" value="${customer.contact}">
+						<input type="text" name="contact" value="${customer.contact}">
 					</td>
 				</tr>
 				<tr>
 					<td>电话号码:</td>
 					<td>
-						<input type="text" name="name" value="${customer.telephone}">
+						<input type="text" name="telephone" value="${customer.telephone}">
 					</td>
 				</tr>
 				<tr>
 					<td>邮箱地址:</td>
 					<td>
-						<input type="text" name="name" value="${customer.email}">
+						<input type="text" name="email" value="${customer.email}">
 					</td>
 				</tr>
 				<tr>
 					<td>照片:</td>
 					<td>
-						<input type="text" name="name" value="${customer.photo}">
+						<input type="file" name="photo" value="${customer.photo}">
 					</td>
 				</tr>
 			</table>
@@ -52,17 +52,17 @@
 		<script type="text/javascript" src="${BASE}/asset/lib/jquery/jquery.form.js"></script>
 
 		<script>
-			${function() {
+			$(function() {
 				$('#customer_form').ajaxForm({
-					type : 'post',
-					url : '${BASE}/customer_creatre',
-					success : function(data) {
+					type: 'post',
+					url: '${BASE}/customer_create',
+					success: function(data) {
 						if (data) {
 							location.href = '${BASE}/customer'
 						}
 					}
 				});
-			}}
+			});
 		</script>
 	</body>
 </html>

@@ -6,7 +6,7 @@ import lombok.Data;
 public class Customer {
     private Long id;
     private String name;
-    private String contract;
+    private String contact;
     private String telephone;
     private String email;
     private String remark;

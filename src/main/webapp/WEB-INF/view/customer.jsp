@@ -18,7 +18,7 @@
     <table>
         <tr>
             <th>name</th>
-            <th>contract</th>
+            <th>contact</th>
             <th>telephone</th>
             <th>email</th>
             <th>operation</th>
@@ -26,7 +26,7 @@
         <c:forEach var="customer" items="${customerList}">
             <tr>
                 <td>${customer.name}</td>
-                <td>${customer.contract}</td>
+                <td>${customer.contact}</td>
                 <td>${customer.telephone}</td>
                 <td>${customer.email}</td>
                 <td>
@@ -35,7 +35,7 @@
                 </td>
             </tr>
         </c:forEach>
-        <a href="${BASE}/customer_create">create</a>
     </table>
+    <a href="${BASE}/customer_create">create</a>
 </body>
 </html>
